@@ -3,16 +3,16 @@ import sounddevice as sd
 from scipy.io.wavfile import write
 import os
 
-fs = 44100  # this is the frequency sampling; also: 4999, 64000
-seconds = 5  # Duration of recording
+fs = 44100  # fréquence
+seconds = 5  # Durée de l'enregistrement
 
 myrecording = sd.rec(int(seconds * fs), samplerate=fs, channels=2)
-print("Starting: Speak now!")
-sd.wait()  # Wait until recording is finished
-print("finished")
-write('output.wav', fs, myrecording)  # Save as WAV file
-os.startfile("output.wav")
+print("Prononcez le mot..")
+sd.wait()  # on attend que l'enregistrement se termine
+print("Mot enregistré")
+write('record.wav', fs, myrecording)  # enregistre en wav
+os.startfile("record.wav")
 
-
+#commandes pour installer les bibliothèques utilisées
 #pip install sounddevice
 #pip install scipy
