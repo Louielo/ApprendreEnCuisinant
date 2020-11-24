@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup	# il faut l'installer avant : pip install beautifu
 
 tablink = []
 tabtext = []
+tabingr = []
 
 url = "https://www.marmiton.org/"
 response = get(url)
@@ -18,7 +19,7 @@ if response.status_code == 200 : # on vérifie que la requete ai bien abouti
 # 404 : page non trouvée ;
 # 500 et 503 : erreur serveur ;
 # 504 : le serveur n'a pas répondu.
-	soup = BeautifulSoup(source, "lxml") 	#précise qu'on veut le format lxml
+	soup = BeautifulSoup(source, "html.parser") 	#précise qu'on veut le format lxml
 
 	for link in soup.find_all("a", {"class": "header-main-menu__item"}):
 		tablink.append(link.get('href'))
@@ -29,7 +30,7 @@ if response.status_code == 200 : # on vérifie que la requete ai bien abouti
 	response = get(url)
 
 	source = response.text
-	soup = BeautifulSoup(source, "lxml")
+	soup = BeautifulSoup(source, "html.parser")
 
 else :
 	print("Impossible de récupérer une recette sur le site de "+url)
@@ -40,4 +41,9 @@ for title in soup.find_all("h1", {"class": "main-title"}):
 for text in soup.find_all("li", {"class": "recipe-preparation__list__item"}):
 	tabtext.append(text.get_text())
 	print(text.get_text())
+for ingredients in soup.find_all("span", {"class":["ingredient","recipe-ingredient-qt","recipe-ingredient__complement"]}):
+
+	#print(ingredients)
+		#tabingr.append(ingredients.get_text())
+	print(ingredients.get_text())
 
