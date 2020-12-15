@@ -35,15 +35,24 @@ if response.status_code == 200 : # on vérifie que la requete ai bien abouti
 else :
 	print("Impossible de récupérer une recette sur le site de "+url)
 
-for title in soup.find_all("h1", {"class": "main-title"}):
-	title = title.get_text()
-	print("\n"+title+"\n")
+
+f = open("recette.txt", "w")
+
+# for title in soup.find_all("h1", {"class": "main-title"}):
+# 	title = title.get_text()
+# 	print("\n"+title+"\n")
+# 	print(f.write(title+"\n"))
 for text in soup.find_all("li", {"class": "recipe-preparation__list__item"}):
 	tabtext.append(text.get_text())
 	print(text.get_text())
+	print(f.write(text.get_text()+"\n"))
 for ingredients in soup.find_all("span", {"class":["ingredient","recipe-ingredient-qt","recipe-ingredient__complement"]}):
+	# Séparer les ingrédients quantité et valeur, ne pas mettre les quantités dans le fichier texte pour java mais les afficher dans le cmd.
 
 	#print(ingredients)
 		#tabingr.append(ingredients.get_text())
 	print(ingredients.get_text())
+	print(f.write(ingredients.get_text()))
 
+
+f.close()
