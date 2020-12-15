@@ -4,8 +4,11 @@ A installer :
 EasyAlign installé dans le dossier :
 
 #commandes pour installer les bibliothèques utilisées
+
 #pip install sounddevice
+
 #pip install scipy
+
 BeautifulSoup
 
 
