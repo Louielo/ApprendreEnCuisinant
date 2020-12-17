@@ -36,7 +36,7 @@ else :
 	print("Impossible de récupérer une recette sur le site de "+url)
 
 
-f = open("recette.txt", "w")
+f = open("coreNLP/recette.txt", "w")
 
 # for title in soup.find_all("h1", {"class": "main-title"}):
 # 	title = title.get_text()

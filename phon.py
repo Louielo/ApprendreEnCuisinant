@@ -1,7 +1,7 @@
 
 ########## Récupération des phonèmes du mot en SAMPA à partir du textgrid ##########
 
-f1 = open("output.TextGrid", "r", encoding='utf8')
+f1 = open("record.TextGrid", "r", encoding='utf8')
 praat = f1.read()
 f1.close()
 
@@ -50,7 +50,9 @@ lexiphon = f3.read().split("\n")
 f3.close()
 
 f4 = open("mot.txt", "r", encoding='utf8')		# Récupération du mot qui a été prononcé
-mot = f4.read()
+mot = f4.readline().strip("\n")
+print(mot)
+print(len(mot))
 f4.close()
 
 for i in range (0, len(lexiphon)):
@@ -59,15 +61,19 @@ for i in range (0, len(lexiphon)):
 phonlex = []
 booleen = True
 newphonapi = []
-
+test= ""
 for i in range (0, len(lexiphon)):
+
 	if lexiphon[i][0] == mot:
 		for g in range(0, len(lexiphon[i][1])):
 			if lexiphon[i][1][g] != " ":
 				phonlex.append(lexiphon[i][1][g])
-		if phonlex == phonapi:			# Si la prononciation est exacte pas besoin de vérifier phonème par phonème
-			"Bonne prononciation"
+				test = test+lexiphon[i][1][g]+" "
+		if test[:-1] == phonapi:			# Si la prononciation est exacte pas besoin de vérifier phonème par phonème
+			print("Bonne prononciation")
+		
 		else:
+			print(test[:-1], phonapi)
 			for y in range(0, len(phonapi)):
 				if phonapi[y] != " ":
 					newphonapi.append(phonapi[y])
@@ -78,4 +84,4 @@ for i in range (0, len(lexiphon)):
 						print("Votre prononciation : "+phonapi+"\nLa prononciation attendue : "+str(phonlex)+"\nDans ce mot, il faut prononcer ce phonème : "+phonlex[k])
 						booleen = False
 						break
-				
+				booleen = False
