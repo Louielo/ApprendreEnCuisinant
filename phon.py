@@ -3,6 +3,7 @@
 
 f1 = open("output.TextGrid", "r", encoding='utf8')
 praat = f1.read()
+f1.close()
 
 lignes = praat.split("\n")
 longu = int(lignes[13][-2])		# longueur du nombre de phonème + début du mot et fin du mot
@@ -21,8 +22,6 @@ for i in range (0, len(lignes)):									# On parcourt toutes les lignes du tabl
 				if lignes[i][j+2] != "\"":							# Si on a pas "a" par exemple mais "a~" on récupère le deuxième signe
 					phoneme[-1] = phoneme[-1] + lignes[i][j+2]
 
-print(phoneme)
-
 
 ########## Conversion de SAMPA à API à partir de notre tsv ##########
 
@@ -30,12 +29,34 @@ print(phoneme)
 f2 = open("SampaToApi.tsv", "r", encoding='utf8')
 
 convert = f2.read().split("\n")				# On découpe lignes par lignes puis par tabulations pour avoir un tableau de type [[sampa, api], [sampa, api]]
+f2.close()
+
 for i in range (0, len(convert)):
 	convert[i]=convert[i].split("\t")
 
-for i in range (len(phoneme)):				# On remplace les symboles sampa par les symboles api
+phonapi = ""
+for i in range (len(phoneme)):				# On créé une nouvelle variable avec des symboles api
 	for j in range (len(convert)):
 		if phoneme[i] == convert[j][0]:
-			phoneme[i] = convert[j][1]
+			phonapi = phonapi + convert[j][1]+" "
+phonapi = phonapi[:-1]						# On enlève le dernier espace
 
-print(phoneme)
+
+######### Comparaison de la prononciation de l'apprenant avec celle du lexique phonétisé #########
+
+
+f3 = open("french.tsv", "r", encoding='utf8')	# Récupération du lexique phonétique
+lexiphon = f3.read().split("\n")
+f3.close()
+
+f4 = open("mot.txt", "r", encoding='utf8')		# Récupération du mot qui a été prononcé
+mot = f4.read()
+f4.close()
+
+for i in range (0, len(lexiphon)):
+	lexiphon[i]=lexiphon[i].split("\t")
+
+for i in range (0, len(lexiphon)):
+	if lexiphon[i][0] == mot:
+		print(lexiphon[i])
+
