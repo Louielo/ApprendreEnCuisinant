@@ -56,7 +56,26 @@ f4.close()
 for i in range (0, len(lexiphon)):
 	lexiphon[i]=lexiphon[i].split("\t")
 
+phonlex = []
+booleen = True
+newphonapi = []
+
 for i in range (0, len(lexiphon)):
 	if lexiphon[i][0] == mot:
-		print(lexiphon[i])
-
+		for g in range(0, len(lexiphon[i][1])):
+			if lexiphon[i][1][g] != " ":
+				phonlex.append(lexiphon[i][1][g])
+		if phonlex == phonapi:			# Si la prononciation est exacte pas besoin de vérifier phonème par phonème
+			"Bonne prononciation"
+		else:
+			for y in range(0, len(phonapi)):
+				if phonapi[y] != " ":
+					newphonapi.append(phonapi[y])
+			j= 0
+			while booleen:
+				for k in range(0, len(newphonapi)-1):
+					if phonlex[k] != newphonapi[k] and newphonapi[k]!=" " and phonlex[k] != " ":
+						print("Votre prononciation : "+phonapi+"\nLa prononciation attendue : "+str(phonlex)+"\nDans ce mot, il faut prononcer ce phonème : "+phonlex[k])
+						booleen = False
+						break
+				
