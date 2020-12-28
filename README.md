@@ -23,3 +23,5 @@ Ordre des scripts :
 Important : 
 
 Praat.exe doit être dans le dossier
+Selon linux ou windows, changer la librairie utilisée dans record.py et pour l'appel au script de praat avec parcelmouth
+Il faut changer les chemins (dans les scripts praat pour easyalign)
