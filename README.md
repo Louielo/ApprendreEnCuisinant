@@ -9,9 +9,16 @@ EasyAlign installé dans le dossier :
 
 #pip install scipy
 
+Getrecipe.py :
+Requests
+#pip install requests
 BeautifulSoup
+#pip install beautifulsoup4
 
-
+Ordre des scripts : 
+-Getrecipe.py
+-CoreNLP
+-lereste
 
 Important : 
 
