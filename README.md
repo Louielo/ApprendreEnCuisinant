@@ -16,9 +16,9 @@ BeautifulSoup
 #pip install beautifulsoup4
 
 Ordre des scripts : 
--Getrecipe.py
+-main.py
 -CoreNLP
--lereste
+-suite de main.py
 
 Important : 
 
