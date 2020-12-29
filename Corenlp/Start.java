@@ -132,8 +132,6 @@ public class Start {
     	fverbes.fermer();
     	System.out.println("Fichiers écrits");
     	
-    	runpy scriptPython = new runpy();
-        scriptPython.runScript();
     }
 
 }
