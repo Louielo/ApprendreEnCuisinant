@@ -27,4 +27,5 @@ Pour linux :
 - Suite de main.py en appuyant sur la touche entrée
 
 <br>
+
 ## Bon apprentissage et bonne cuisine !!
