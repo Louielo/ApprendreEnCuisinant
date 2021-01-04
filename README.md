@@ -3,7 +3,7 @@
 
 ## A installer :
 - [Praat](https://www.fon.hum.uva.nl/praat/) (si possible mettre le .exe dans le dossier sinon modifier le chemin)
-- EasyAlign
+- [EasyAlign](http://latlcui.unige.ch/phonetique/easyalign.php)
 <br>
 
 ## Installer les bibliothèques utilisées
