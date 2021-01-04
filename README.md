@@ -2,7 +2,7 @@
 
 
 ## A installer :
-- Praat (si possible mettre le .exe dans le dossier sinon modifier le chemin)
+- [Praat] (https://www.fon.hum.uva.nl/praat/)(si possible mettre le .exe dans le dossier sinon modifier le chemin)
 - EasyAlign
 <br>
 
