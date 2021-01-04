@@ -1,5 +1,6 @@
 
-# Modifie le premier textgrid pour rajouter des phonèmes en options
+### Fonction qui lance les deux premieres étapes de easy align 
+### et modifie le premier textgrid pour rajouter des phonèmes en options
 
 def praatrun1():
 	import fonction as fc
@@ -8,7 +9,7 @@ def praatrun1():
 	# Pour windows
 	subprocess.call(['Praat.exe', '--run', 'script1.praat'])
 
-	# pour linux les deux premières commandes ne fonctionnent pas mais ça fonctionne bien en utilisant parcelmouth
+	# pour linux les deux premières commandes ne fonctionnent pas mais ça fonctionne bien en utilisant parselmouth
 	#subprocess.Popen(['Praat.exe, script1.praat'], shell=True)
 	#subprocess.call('Praat.exe', '--run', 'script1.praat', shell=True)
 	#import parselmouth # pip install praat-parselmouth
