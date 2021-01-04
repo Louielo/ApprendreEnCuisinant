@@ -7,29 +7,29 @@
 <br>
 
 ## Installer les bibliothèques utilisées
-- Sounddevice : 
+- [Sounddevice](https://python-sounddevice.readthedocs.io/en/0.4.1/) : 
 ```bash
 pip install sounddevice
 ```
-- Scipy : 
+- [Scipy](https://www.scipy.org/install.html) : 
 ```bash
 pip install scipy
 ```
-- Requests : 
+- [Requests](https://requests.readthedocs.io/en/master/user/install/#install) : 
 ```bash
 python -m pip install requests
 ```
-- BeautifulSoup : 
+- [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) : 
 ```bash
 pip install beautifulsoup4
 ```
 
 Pour linux :
-- Playsound : 
+- [Playsound](https://pypi.org/project/playsound/) : 
 ```bash
 pip install playsound
 ```
-- Parselmouth : 
+- [Parselmouth](https://parselmouth.readthedocs.io/en/stable/) : 
 ```bash
 pip install praat-parselmouth
 ```
@@ -47,5 +47,10 @@ pip install praat-parselmouth
 - Suite de main.py en appuyant sur la touche entrée
 
 <br>
+
+## Reference :
+- [Lexique phonétisé french.tsv](https://gricad-gitlab.univ-grenoble-alpes.fr/pedagogies-multimodales/lexiques-phonetises)
+- [CoreNLP](https://stanfordnlp.github.io/CoreNLP/)
+- [Marmiton](https://www.marmiton.org/)
 
 ## Bon apprentissage et bonne cuisine !!
