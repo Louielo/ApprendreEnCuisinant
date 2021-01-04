@@ -7,14 +7,32 @@
 <br>
 
 ## Installer les bibliothèques utilisées
-- Sounddevice : pip install sounddevice
-- Scipy : pip install scipy
-- Requests : python -m pip install requests
-- BeautifulSoup : pip install beautifulsoup4
+- Sounddevice : 
+```bash
+pip install sounddevice
+```
+- Scipy : 
+```bash
+pip install scipy
+```
+- Requests : 
+```bash
+python -m pip install requests
+```
+- BeautifulSoup : 
+```bash
+pip install beautifulsoup4
+```
 
 Pour linux :
-- Playsound : pip install playsound
-- Parselmouth : pip install praat-parselmouth
+- Playsound : 
+```bash
+pip install playsound
+```
+- Parselmouth : 
+```bash
+pip install praat-parselmouth
+```
 <br>
 
 ## Modifications importantes
