@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 
-//import org.apache.log4j.BasicConfigurator;
+//import org.apache.log4j.BasicConfigurator;	// Parfois utile pour régler certains bugs
 
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.ling.CoreLabel;
@@ -39,28 +39,28 @@ public class Start {
     	// instance pour avoir un int 
         Random rand = new Random(); 
 
-		//BasicConfigurator.configure();
-    	// crï¿½ation d'un objet Properties
+		//BasicConfigurator.configure();      // Ligne de code qui parfois corrige certain bugs
+    	// création d'un objet Properties
     	Properties props = new Properties();
     	props.setProperty("ner.useSUTime", "false");
-    	// dï¿½finition du pipeline
+    	// définition du pipeline
     	props.setProperty("annotators", "tokenize, ssplit, parse, lemma, ner");
-    	// paramï¿½trage pour le franï¿½ais
+    	// paramétrage pour le français
     	props.setProperty("props", "StanfordCoreNLP-french.properties");
     	props.setProperty("tokenize.language","French");
     	props.setProperty("parse.model","edu/stanford/nlp/models/lexparser/frenchFactored.ser.gz");
     	props.setProperty("pos.model","edu/stanford/nlp/models/postagger/french/french.tagger");
     	props.setProperty("tokenize.verbose","false"); // True = affiche les tokens
-    	// crï¿½ation du pipeline
+    	// création du pipeline
     	StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
 
     	System.out.println("Lancement du pipeline sur la recette...");
 
-    	// Lance le pipeline sur une chaine de caractï¿½res qu'on rï¿½cup dans le fichier recette
+    	// Lance le pipeline sur une chaine de caractères qu'on récup dans le fichier recette
     	String text = new String(Files.readAllBytes(Paths.get("recette.txt")));
     	
     	
-    	// crï¿½er une annotation vide avec le texte
+    	// créer une annotation vide avec le texte
     	Annotation document = new Annotation(text);
     	// lance l'annotation sur le texte
     	pipeline.annotate(document);
@@ -68,11 +68,9 @@ public class Start {
     	// Obtenir la liste des phrases
     	List<CoreMap> sentences = document.get(CoreAnnotations.SentencesAnnotation.class);
     	for (CoreMap sentence : sentences) {
-    	 // obtenir l'arbre d'analyse de chaque phrase
-    	edu.stanford.nlp.trees.Tree parseTree = sentence.get(TreeAnnotation.class);
 
     	 // Ecrire l'arbre
-    	 //System.out.println(parseTree);		//phrase entiï¿½re
+    	 //System.out.println(parseTree);		//phrase entière
     	 
     	 // traitement des tokens 
     	
@@ -80,52 +78,39 @@ public class Start {
 	    		 String pos = token.get(PartOfSpeechAnnotation.class);
 	    		 String newtoken = token.toString();
 		    	 
-	    		 for (int i = 0; i < newtoken.length(); i++) {		// on supprime ï¿½ partir des tirets pour ne pas avoir "chocolat -3" mais "chocolat"
+	    		 for (int i = 0; i < newtoken.length(); i++) {		// on supprime à partir des tirets pour ne pas avoir "chocolat -3" mais "chocolat"
 	 	            if (newtoken.charAt(i) == '-') {
 	 	            	newtoken = newtoken.substring(0, i);
 	 	            }
 	 	        }
-	    	 
+	    		 // On fait attention de ne pas récupérer les mots d'une seule lettre car il ne serait pas très intéressant de les prononcer
 		    	 if (pos.equals("N")||pos.equals("NC")&&newtoken.length()>1) {	// si le pos est N alors on enregistre le token dans le fichier nom
-		    		 // System.out.println(newtoken+" : "+pos);
-		    		 // fnoms.ecrire(newtoken.toLowerCase());
-		    	     // ici on append newtoken.toLowerCase() ï¿½ un tableau
 		    		 listnom.add(newtoken.toLowerCase());
 
 		    	 } else if (pos.equals("V")||pos.equals("VINF")&&newtoken.length()>1) {	// si le pos est N alors on enregistre le token dans le fichier verbe
-		    		 // System.out.println(newtoken+" : "+pos);
-		    		 //fverbes.ecrire(newtoken.toLowerCase());
-		    		 listverb.add(newtoken.toLowerCase());
-		    	
+		    		 listverb.add(newtoken.toLowerCase());	    	
 		    		 
 		    	 } else if (pos.equals("ADJ")&&newtoken.length()>1) {	// si le pos est N alors on enregistre le token dans le fichier verbe
-		    		 // System.out.println(newtoken+" : "+pos);
-		    		 //fverbes.ecrire(newtoken.toLowerCase());
 		    		 listadj.add(newtoken.toLowerCase());
 		    	
 		    	 } else if (pos.equals("ADV")&&newtoken.length()>1) {	// si le pos est N alors on enregistre le token dans le fichier verbe
-		    		 // System.out.println(newtoken+" : "+pos);
-		    		 //fverbes.ecrire(newtoken.toLowerCase());
 		    		 listadv.add(newtoken.toLowerCase());
 		    		 
-		    	 }else {
-		    		 // System.out.println(pos);
 		    	 }
 	    	 }
-	    	 	// ne pas inclure mot d'une ou deux lettres
     	}
     	
-	    // On gï¿½nï¿½re un chiffre random pour choisir au hasard un des noms
+	    // On génère un chiffre random pour choisir au hasard un des noms
 	    int rand_n = rand.nextInt(listnom.size());// en mettant length du tab nom
 	    fnoms.ecrire(listnom.get(rand_n));
-	    // On gï¿½nï¿½re un chiffre random pour choisir au hasard un des verbes
+	    // On génère un chiffre random pour choisir au hasard un des verbes
 	    int rand_v = rand.nextInt(listverb.size());
 	    fverbes.ecrire(listverb.get(rand_v));
 	    int rand_adj = rand.nextInt(listadj.size());
 	    fadjectifs.ecrire(listadj.get(rand_adj));
 	    int rand_adv = rand.nextInt(listadv.size());
 	    fadverbes.ecrire(listadv.get(rand_adv));
-    	//Ã©criture du fichier
+    	//Ecriture du fichier
 	    fadjectifs.fermer();
 	    fadverbes.fermer();
     	fnoms.fermer();
