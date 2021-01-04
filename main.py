@@ -47,6 +47,12 @@ for mot in range(0, len(mots)):
 	if mot < len(mots)-1:
 		arret = input(bleu+"\nVoulez vous passer au mot suivant ? (y/n)"+norm)
 		if arret == "n":
+			t="record.TextGrid"
+			fc.suppr(t)
+			t="nouveaurecord.TextGrid"
+			fc.suppr(t)
+			t="final.TextGrid"
+			fc.suppr(t)
 			break
 	# Avant de passer au mot suivant on supprime les textgrids existants (sinon erreurs d'encoding)
 	t="record.TextGrid"
