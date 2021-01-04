@@ -1,4 +1,6 @@
 
+### Fonction record qui va enregistrer le mot prononcé par l'utilisateur
+
 def record(mot):
 	# librairies utilisées
 	import sounddevice as sd
@@ -21,14 +23,10 @@ def record(mot):
 		os.startfile("record.wav") # pour faire écouter à l'utilisateur ce qu'il a prononcé
 		# Sur linux : on utilise la bibliothèque playsound
 		# playsound('record.wav')
+		
 		avis = input("Voulez vous prononcer le mot encore une fois ? y/n ")
 		if avis == "n" :
 			break
-
+	# Pour savoir quel mot vient d'être prononcer
 	f = open("mot.txt", "w", encoding='utf-8')
 	f.write(mot)
-
-	#commandes pour installer les bibliothèques utilisées
-	#pip install sounddevice
-	#pip install scipy
-	#pip install playsound # pour linux
