@@ -1,5 +1,7 @@
 # ApprendreEnCuisinant
-A installer :
+
+
+## A installer :
 - Praat (si possible mettre le .exe dans le dossier sinon modifier le chemin)
 - EasyAlign
 <br>
