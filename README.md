@@ -6,19 +6,19 @@ A installer :
 
 #installer les bibliothèques utilisées
 
-Sounddevice : pip install sounddevice
-Scipy : pip install scipy
-Requests : python -m pip install requests
-BeautifulSoup : pip install beautifulsoup4
+- Sounddevice : pip install sounddevice
+- Scipy : pip install scipy
+- Requests : python -m pip install requests
+- BeautifulSoup : pip install beautifulsoup4
 
 Pour linux :
-Playsound : pip install playsound
-Parselmouth : pip install praat-parselmouth
+- Playsound : pip install playsound
+- Parselmouth : pip install praat-parselmouth
 
 Ordre des scripts : 
--main.py
--CoreNLP
--suite de main.py
+- main.py
+- CoreNLP
+- suite de main.py
 
 Important : 
 Selon linux ou windows, changer la librairie utilisée dans record.py et pour l'appel au script de praat avec parselmouth
