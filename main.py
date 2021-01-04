@@ -1,6 +1,7 @@
 
-# Nos scripts
+### Script principal qui va lancer l'application et utiliser les fonctions présentes dans les différents scripts
 
+# Nos scripts
 import getrecipe
 import record
 import praatrun1
@@ -15,6 +16,7 @@ norm = '\033[0m'
 
 # On récupère une recette
 getrecipe.getrecipe()
+print("\nCette recette vient du site www.marmiton.org")
 
 # On demande à l'utilisateur de lancer corenlp pour avoir les mots à prononcer
 input(bleu+"\n\nVeuilliez maintenant lancer le script Corenlp pour récupérer les mots à prononcer à partir du fichier recette.txt\n"+red+"ATTENTION : Vérifiez que les fichiers textes créés soient dans le dossier principal."+bleu+"\nLorsque vous êtes prêts, appuyez sur entrée.\n\n"+norm)

@@ -1,4 +1,6 @@
 
+### Fonction getrecipe qui permet de récupérer une recette aléatoire sur le site de Marmiton
+
 def getrecipe():
 	from requests import get	# get pour émettre une requete HTTP
 	from bs4 import BeautifulSoup	# on utilise la librairie BeautifulSoup pour le webscraping. pip install beautifulsoup4
