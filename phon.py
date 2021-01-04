@@ -1,4 +1,11 @@
+
+### Fonction phon qui va dans un premier temps récupérer la transcription en sampa
+### du textgrid, puis le convertir en api grace au .tsv créé. Enfin, on va comparer
+### la prononciation de l'apprenant avec celle du dico phonétisé.
+
 def phon():
+
+
 	########## Récupération des phonèmes du mot en SAMPA à partir du textgrid ##########
 	import fonction as fc
 
@@ -12,7 +19,6 @@ def phon():
 	longu = int(lignes[13][-2])		# longueur du nombre de phonème + début du mot et fin du mot
 
 	lignes = lignes[14:14+longu*4]	# Pour récupérer toutes les lignes concernant chaque phonème, le nombre de phonème est stocké dans longu
-	# print(lignes)
 	lignes = [x.strip(' ') for x in lignes]	# Enlever les espaces au début des lignes parce que c'est pas beau
 
 	phoneme = []
@@ -30,8 +36,10 @@ def phon():
 						phoneme[-1] = phoneme[-1] + lignes[i][j+2]
 	print('\033[94m'+"\nVotre prononciation en Sampa : "+' '.join(phoneme))
 
-	########## Conversion de SAMPA à API à partir de notre tsv ##########
 
+
+
+	########## Conversion de SAMPA à API à partir de notre tsv ##########
 
 	f2 = open("SampaToApi.tsv", "r", encoding='utf-8')
 
@@ -44,13 +52,14 @@ def phon():
 	phonapi = ""
 	for i in range (len(phoneme)):				# On créé une nouvelle variable avec des symboles api
 		for j in range (len(convert)):
-			#print("phoneme = "+phoneme[i])
 			if phoneme[i] == convert[j][0]:
 				phonapi = phonapi + convert[j][1]
 
 	print('\033[94m'+"\nVotre prononciation en Api : "+' '.join(phonapi)+'\033[0m')
 
-	#print("phonapi = "+phonapi)
+
+
+
 	######### Comparaison de la prononciation de l'apprenant avec celle du lexique phonétisé #########
 
 	f4 = open("mot.txt", "r", encoding="utf-8")		# Récupération du mot qui a été prononcé
@@ -86,7 +95,6 @@ def phon():
 					if phonlex[k] != newphonapi[k] and newphonapi[k]!=" " and phonlex[k] != " ":
 						print("Votre prononciation : "+phonapi+"\nLa prononciation attendue : "+" ".join(phonlex)+"\nDans ce mot, il faut prononcer le phonème "+phonlex[k]+" et non pas "+newphonapi[k])
 						break
-			
 
 	if not trouve:
 		print("Erreur : Le mot n'est pas trouvé dans le lexique.")
