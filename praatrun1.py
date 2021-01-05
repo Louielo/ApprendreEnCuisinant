@@ -24,7 +24,7 @@ def praatrun1():
 	# c du textgrid dans une liste ligne par ligne
 	tG = tG.split("\n")
 	# Liste des phonèmes que l'on va choisir de mettre en option
-	phonoption = {"y":"u", "u":"y", "e":"E", "e~":"9~"}
+	phonoption = {"y":"u", "u":"y", "2":"9", "2":"9"}
 	phon = ""			# partie du textgrid que l'on veut modifier
 	c = ""				# contenu du nouveau textgrid
 	firsttext = True	# booléen qui permet de savoir qu'il s'agit de la première occurence de 'text' dans le textgrid et donc de la ligne avec les phonèmes que l'on veut modifier
